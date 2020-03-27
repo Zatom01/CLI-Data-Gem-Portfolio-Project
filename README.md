@@ -3,8 +3,8 @@ CLI-Data-Gem-Portfolio-Project.
 CLI for HULU website. Provides user with the array of categories from the movie page, lets user to select specific category and the movie inside the category and returns user the movie details. 
 
 Prerequisites:
-Any Ruby IDE
-Nokogiri gem
+Any Ruby IDE,
+Nokogiri gem, and 
 Open-URI gem
 
 Running the project:
