@@ -1,4 +1,4 @@
-CLI-Data-Gem-Portfolio-Project
+CLI-Data-Gem-Portfolio-Project.\n
 CLI for HULU website. Provides user with the array of categories from the movie page, lets user to select specific category and the movie inside the category and returns user the movie details. 
 
 Prerequisites:
