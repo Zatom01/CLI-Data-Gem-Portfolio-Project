@@ -14,4 +14,4 @@ Author:
 Anil Gurung
 
 License:
-This project is licensed under the MIT License - see the LICENSE.md file for details
+https://github.com/Zatom01/CLI-Data-Gem-Portfolio-Project/blob/master/LICENSE
