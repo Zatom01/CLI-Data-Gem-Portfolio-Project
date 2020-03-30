@@ -8,13 +8,14 @@ class Scraper
     URL = "https://www.hulu.com/movies"
     html=open(URL)
     @@doc1=Nokogiri::HTML(html)
-    categories_node = @@doc1.css('h2.jsx-3585791598.SimpleCollection__title')
-    @@categories_arr=[] #categories array
-    categories_node.each do |category|
-        @@categories_arr << category.text
-    end
+    @@categories_node = @@doc1.css('h2.jsx-3585791598.SimpleCollection__title')
+
 
     def list_categories
+        categories_arr=[] #categories array
+        @@categories_node.each do |category|
+            categories_arr << category.text
+        end
 
         print "Would you like to see HULU movies categories? Enter Y or N : "
         input=gets.chomp.upcase
@@ -24,15 +25,15 @@ class Scraper
             puts "\nHulu Movies Categories:\n"
 
             #displays Hulu movie categories
-            @@categories_arr.each do |each|
-                puts"#{@@categories_arr.index(each)+1}. #{each}"
+            categories_arr.each do |each|
+                puts"#{categories_arr.index(each)+1}. #{each}"
             end
 
-            print "\n Choose movie. Enter one valid number :"
+            print "\n Choose category. Enter one valid number :"
             @category_index=gets.chomp
             @category_index=@category_index.to_i
 
-            puts "\nYou chose #{@category_index}. #{@@categories_arr[@category_index-1]}"
+            puts "\nYou chose #{@category_index}. #{categories_arr[@category_index-1]}"
             puts " "
 
             #position of a particular category in a 2-D matrix
