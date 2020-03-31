@@ -4,7 +4,6 @@ require 'pry'
 
 class Detail
 
-
     URL= "https://www.hulu.com/movies"
     html=open(URL)
     @@doc1=Nokogiri::HTML(html)
@@ -13,6 +12,7 @@ class Detail
         @category_index=category_index-1
         @movie_index=movie_index-1
         @link={:link=>[], :title=>[],:description=>[],:genre=>[]}
+
     end
 
     def print_details

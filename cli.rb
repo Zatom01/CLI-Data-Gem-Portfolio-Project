@@ -2,6 +2,7 @@ require_relative 'scraper.rb'
 
 class Cli
 
+
     def run
         scraper=Scraper.new
         scraper.list_categories

@@ -2,6 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 require 'pry'
 require_relative 'detail.rb'
+require_relative 'movie.rb'
 
 class Scraper
 
@@ -9,7 +10,6 @@ class Scraper
     html=open(URL)
     @@doc1=Nokogiri::HTML(html)
     @@categories_node = @@doc1.css('h2.jsx-3585791598.SimpleCollection__title')
-
 
     def list_categories
         categories_arr=[] #categories array
@@ -45,24 +45,24 @@ class Scraper
     end
 
     def list_movies(x,y=0)
-        movie_name=[]
 
         #checks the array size of the selected category
         cat_arr_size=@@doc1.css('.NonSubSimpleCollection.cu-non-sub-simple-collection')[x-1].css('a.Tile__title-link').css('div').size
 
-        #movie_name array is filled with all the movies from the selected category
         #y=sub array index of the category. increments by 1
         counter=0
         while counter < cat_arr_size
-            movie_name<<@@doc1.css('.NonSubSimpleCollection.cu-non-sub-simple-collection')[x-1].css('a.Tile__title-link').css('div')[y].text
+            movie=@@doc1.css('.NonSubSimpleCollection.cu-non-sub-simple-collection')[x-1].css('a.Tile__title-link').css('div')[y].text
+            m=Movie.new(movie)
             y+=1
             counter+=1
         end
 
         #presents user all the movie titles inside the selected category
-        movie_name.each do |each|
-            puts "#{movie_name.index(each)+1}.  #{each}"
+        Movie.all.each do |each|
+            puts "#{Movie.all.index(each)+1}.  #{each.name}"
         end
+
 
         print "\nplease choose the movie you want to learn about. Enter a valid number: "
         movie_index=gets.chomp.to_i
@@ -75,8 +75,10 @@ class Scraper
         if inp=="Y"
             list_categories
         else
-            puts "\n You Chose #{movie_index}.  #{movie_name[movie_index-1]}"
+
+            puts "\n You Chose #{movie_index}.  #{Movie.find_movie(movie_index)}"
             puts " "
+            Movie.destroy_all
             display_detail(@category_index,movie_index)
         end
 
@@ -88,6 +90,7 @@ class Scraper
     def display_detail(x,y)
         detail=Detail.new(x,y)
         detail.print_details
+
     end
 
 end
