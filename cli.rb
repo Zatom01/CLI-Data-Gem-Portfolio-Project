@@ -10,7 +10,7 @@ class Cli
         input=gets.chomp.upcase
 
         if input=="Y"
-            self.run
+            run
         else
             puts " Have a good day! "
         end
