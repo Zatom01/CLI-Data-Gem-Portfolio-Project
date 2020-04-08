@@ -1,11 +1,10 @@
 require 'open-uri'
 require 'nokogiri'
-require 'pry'
 
 class Detail
 
     URL= "https://www.hulu.com/movies"
-    html=open(URL)
+    html=URI.open(URL)
     @@doc1=Nokogiri::HTML(html)
 
     def initialize(category_index,movie_index)
@@ -28,17 +27,17 @@ class Detail
     end
 
     def movie_title
-        @link[:title] << Nokogiri::HTML(open(@link[:link][0])).css('h1.DetailEntityMasthead__title').text
+        @link[:title] << Nokogiri::HTML(URI.open(@link[:link][0])).css('h1.DetailEntityMasthead__title').text
         puts "Movie Title : #{@link[:title][0]}"
     end
 
     def movie_genre
-        @link[:genre] << Nokogiri::HTML(open(@link[:link][0])).css('div.DetailEntityMasthead__tags').text
+        @link[:genre] << Nokogiri::HTML(URI.open(@link[:link][0])).css('div.DetailEntityMasthead__tags').text
         puts "Movie Genre : #{@link[:genre][0]}"
     end
 
     def movie_description
-        @link[:description] << Nokogiri::HTML(open(@link[:link][0])).css('p.jsx-1677985992.DetailEntityModal__description').text
+        @link[:description] << Nokogiri::HTML(URI.open(@link[:link][0])).css('p.jsx-1677985992.DetailEntityModal__description').text
         puts "Movie Description : #{@link[:description][0]}"
     end
 

@@ -1,13 +1,12 @@
 require 'open-uri'
 require 'nokogiri'
-require 'pry'
 require_relative 'detail.rb'
 require_relative 'movie.rb'
 
 class Scraper
 
     URL = "https://www.hulu.com/movies"
-    html=open(URL)
+    html=URI.open(URL)
     @@doc1=Nokogiri::HTML(html)
     @@categories_node = @@doc1.css('h2.jsx-3585791598.SimpleCollection__title')
 
@@ -90,7 +89,6 @@ class Scraper
     def display_detail(x,y)
         detail=Detail.new(x,y)
         detail.print_details
-
     end
 
 end

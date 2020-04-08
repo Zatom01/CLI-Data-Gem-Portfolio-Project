@@ -1,5 +1,4 @@
 require_relative 'scraper.rb'
-
 class Cli
 
 
