@@ -3,6 +3,7 @@ require 'nokogiri'
 require_relative 'detail.rb'
 require_relative 'movie.rb'
 
+
 class Scraper
 
     URL = "https://www.hulu.com/movies"

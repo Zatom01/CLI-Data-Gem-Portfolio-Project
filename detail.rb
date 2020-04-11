@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 
+
 class Detail
 
     URL= "https://www.hulu.com/movies"

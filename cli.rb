@@ -1,4 +1,5 @@
 require_relative 'scraper.rb'
+require 'lolize/auto'
 
 class Cli
 
