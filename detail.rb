@@ -23,7 +23,9 @@ class Detail
 
     def movie_link
         @link[:link] << "https://www.hulu.com"+@@doc1.css('div.jsx-1977775403.NonSubSimpleCollection.cu-non-sub-simple-collection')[@category_index].css('a.Tile__title-link')[@movie_index].attributes['href'].value
+
         puts "Movie Link : #{@link[:link][0]}"
+
     end
 
     def movie_title

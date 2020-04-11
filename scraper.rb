@@ -72,6 +72,7 @@ class Scraper
 
         inp=gets.chomp.upcase
         if inp=="Y"
+            Movie.destroy_all
             list_categories
         else
 
