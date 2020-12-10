@@ -1,8 +1,8 @@
 require_relative 'scraper.rb'
 require 'lolize/auto'
 
-class Cli
 
+class Cli
 
     def run
         scraper=Scraper.new
