@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'nokogiri'
 
+#byebug continue!
+
 class Detail
 
     URL= "https://www.hulu.com/movies"
@@ -18,10 +20,11 @@ class Detail
         movie_title
         movie_genre
         movie_description
+
     end
 
     def movie_link
-        @link[:link] << "https://www.hulu.com"+@@doc1.css('div.jsx-1977775403.NonSubSimpleCollection.cu-non-sub-simple-collection')[@category_index].css('a.Tile__title-link')[@movie_index].attributes['href'].value
+        @link[:link] << "https://www.hulu.com"+@@doc1.css('.SimpleCollection')[@category_index].css('a.Tile__title-link')[@movie_index].attributes['href'].value
         puts "Movie Link : #{@link[:link][0]}"
 
     end
@@ -37,7 +40,7 @@ class Detail
     end
 
     def movie_description
-        @link[:description] << Nokogiri::HTML(URI.open(@link[:link][0])).css('p.jsx-1677985992.DetailEntityModal__description').text
+        @link[:description] << Nokogiri::HTML(URI.open(@link[:link][0])).css('p.DetailEntityModal__description').text
         puts "Movie Description : #{@link[:description][0]}"
     end
 

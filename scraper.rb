@@ -50,7 +50,6 @@ class Scraper
 
         #checks the array size of the selected category
         cat_arr_size=@@doc1.css('.NonSubSimpleCollection.cu-non-sub-simple-collection')[x-1].css('a.Tile__title-link').css('div').size
-
         #y=sub array index of the category. increments by 1
         counter=0
         while counter < cat_arr_size
@@ -59,7 +58,6 @@ class Scraper
             y+=1
             counter+=1
         end
-
         #presents user all the movie titles inside the selected category
         Movie.all.each do |each|
             puts "#{Movie.all.index(each)+1}.  #{each.name}"
@@ -78,6 +76,7 @@ class Scraper
             Movie.destroy_all
             list_categories
         else
+
 
             puts "\n You Chose #{movie_index}.  #{Movie.find_movie(movie_index)}"
             puts " "
