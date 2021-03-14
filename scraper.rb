@@ -2,14 +2,15 @@ require 'open-uri'
 require 'nokogiri'
 require_relative 'detail.rb'
 require_relative 'movie.rb'
-
+require 'byebug'
 
 class Scraper
 
     URL = "https://www.hulu.com/movies"
     html=URI.open(URL)
     @@doc1=Nokogiri::HTML(html)
-    @@categories_node = @@doc1.css('h2.jsx-3585791598.SimpleCollection__title')
+    @@categories_node = @@doc1.css('.SimpleCollection__tray-header')
+
 
     def list_categories
         categories_arr=[] #categories array
@@ -24,6 +25,7 @@ class Scraper
             puts "\nYou chose YES\n"
             puts "\nHulu Movies Categories:\n"
 
+            # byebug
             #displays Hulu movie categories
             categories_arr.each do |each|
                 puts"#{categories_arr.index(each)+1}. #{each}"
