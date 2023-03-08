@@ -11,7 +11,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     open-uri (0.1.0)
     paint (0.8.7)
-    rack (2.2.3)
+    rack (2.2.6.3)
     thin (1.8.0)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
